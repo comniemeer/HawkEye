@@ -39,7 +39,7 @@ public class MonitorWorldListener extends HawkEyeListener {
 			}
 			//If the environment did it
 			else {
-				DataManager.addEntry(new BlockChangeEntry("Environment", type, loc, "0", BlockUtil.getBlockString(block)));
+				DataManager.addEntry(new BlockChangeEntry("Environment", null, type, loc, "0", BlockUtil.getBlockString(block)));
 			}
 		}
 

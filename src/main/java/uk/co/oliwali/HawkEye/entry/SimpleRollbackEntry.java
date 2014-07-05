@@ -1,5 +1,7 @@
 package uk.co.oliwali.HawkEye.entry;
 
+import java.util.UUID;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -19,8 +21,8 @@ public class SimpleRollbackEntry extends DataEntry {
 		setInfo(player, type, loc);
 		this.data = data;
 	}
-	public SimpleRollbackEntry(String player, DataType type, Location loc, String data) {
-		setInfo(player, type, loc);
+	public SimpleRollbackEntry(String player, UUID uuid, DataType type, Location loc, String data) {
+		setInfo(player, uuid, type, loc);
 		this.data = data;
 	}
 

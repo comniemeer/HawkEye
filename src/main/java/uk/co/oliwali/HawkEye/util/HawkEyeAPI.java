@@ -1,5 +1,7 @@
 package uk.co.oliwali.HawkEye.util;
 
+import java.util.UUID;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,8 +33,11 @@ public class HawkEyeAPI {
 		return addCustomEntry(plugin, action, player.getName(), loc, data);
 	}
 	public static boolean addCustomEntry(JavaPlugin plugin, String action, String player, Location loc, String data) {
+		return addCustomEntry(plugin, action, player, null, loc, data);
+	}
+	public static boolean addCustomEntry(JavaPlugin plugin, String action, String player, UUID uuid, Location loc, String data) {
 		if (plugin == null || action == null || player == null || loc == null || data == null) return false;
-		DataEntry entry = new DataEntry(player, DataType.OTHER, loc, action + "-" + data);
+		DataEntry entry = new DataEntry(player, uuid, DataType.OTHER, loc, action + "-" + data);
 		return addEntry(plugin, entry);
 	}
 

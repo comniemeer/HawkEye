@@ -2,6 +2,7 @@ package uk.co.oliwali.HawkEye.entry;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -26,6 +27,8 @@ public class DataEntry {
     private String date;
 
     private String player = null;
+    
+    private UUID uuid = null;
 
     private String world;
 
@@ -46,8 +49,8 @@ public class DataEntry {
     	setInfo(player, type, loc);
     	setData(data);
     }
-    public DataEntry(String player, DataType type, Location loc, String data) {
-    	setInfo(player, type, loc);
+    public DataEntry(String player, UUID uuid, DataType type, Location loc, String data) {
+    	setInfo(player, uuid, type, loc);
     	setData(data);
     }
 
@@ -77,6 +80,13 @@ public class DataEntry {
     }
     public String getPlayer() {
         return player;
+    }
+
+    public void setUUID(UUID uuid) {
+        this.uuid = uuid;
+    }
+    public UUID getUUID() {
+        return uuid;
     }
 
     public void setType(DataType type) {
@@ -193,20 +203,21 @@ public class DataEntry {
      * @param action
      */
 	public void setInfo(Player player, DataType type, Location loc) {
-		setInfo(player.getName(), type, loc);
+		setInfo(player.getName(), player.getUniqueId(), type, loc);
 	}
-	public void setInfo(String player, DataType type, Location loc) {
-		setInfo(player, "HawkEye", type, loc);
+	public void setInfo(String player, UUID uuid, DataType type, Location loc) {
+		setInfo(player, uuid, "HawkEye", type, loc);
 	}
-	public void setInfo(String player, JavaPlugin instance, DataType type, Location loc) {
-		setInfo(player, instance.getDescription().getName(), type, loc);
+	public void setInfo(String player, UUID uuid, JavaPlugin instance, DataType type, Location loc) {
+		setInfo(player, uuid, instance.getDescription().getName(), type, loc);
 	}
-	public void setInfo(String player, String instance, DataType type, Location loc) {
+	public void setInfo(String player, UUID uuid, String instance, DataType type, Location loc) {
 		loc = Util.getSimpleLocation(loc);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    setDate(sdf.format(Calendar.getInstance().getTime()));
 	    setPlugin(instance);
 		setPlayer(player);
+		setUUID(uuid);
 		setType(type);
 		setWorld(loc.getWorld().getName());
 		setX(loc.getX());

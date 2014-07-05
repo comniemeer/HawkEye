@@ -60,22 +60,22 @@ public class MonitorBlockListener extends HawkEyeListener {
 
 	@HawkEvent(dataType = DataType.BLOCK_FORM)
 	public void onBlockForm(BlockFormEvent event) {
-		DataManager.addEntry(new BlockChangeEntry("Environment", DataType.BLOCK_FORM, event.getBlock().getLocation(), event.getBlock().getState(), event.getNewState()));
+		DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.BLOCK_FORM, event.getBlock().getLocation(), event.getBlock().getState(), event.getNewState()));
 	}
 
 	@HawkEvent(dataType = DataType.BLOCK_FADE)
 	public void onBlockFade(BlockFadeEvent event) {
-		DataManager.addEntry(new BlockChangeEntry("Environment", DataType.BLOCK_FADE, event.getBlock().getLocation(), event.getBlock().getState(), event.getNewState()));
+		DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.BLOCK_FADE, event.getBlock().getLocation(), event.getBlock().getState(), event.getNewState()));
 	}
 
 	@HawkEvent(dataType = DataType.BLOCK_BURN)
 	public void onBlockBurn(BlockBurnEvent event) {
-		DataManager.addEntry(new BlockEntry("Environment", DataType.BLOCK_BURN, event.getBlock()));
+		DataManager.addEntry(new BlockEntry("Environment", null, DataType.BLOCK_BURN, event.getBlock()));
 	}
 
 	@HawkEvent(dataType = DataType.LEAF_DECAY)
 	public void onLeavesDecay(LeavesDecayEvent event) {
-		DataManager.addEntry(new SimpleRollbackEntry("Environment", DataType.LEAF_DECAY, event.getBlock().getLocation(), ""));
+		DataManager.addEntry(new SimpleRollbackEntry("Environment", null, DataType.LEAF_DECAY, event.getBlock().getLocation(), ""));
 	}
 
 	@HawkEvent(dataType = {DataType.LAVA_FLOW, DataType.WATER_FLOW})
@@ -105,7 +105,7 @@ public class MonitorBlockListener extends HawkEyeListener {
 				data.setData((byte)0);
 				from.setData(data);
 			}
-			DataManager.addEntry(new BlockChangeEntry("Environment", DataType.LAVA_FLOW, loc, to, from));
+			DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.LAVA_FLOW, loc, to, from));
 
 		}
 
@@ -116,7 +116,7 @@ public class MonitorBlockListener extends HawkEyeListener {
 			if (fluidBlocks.contains(to.getTypeId())) {
 				data.setData((byte)(from.getRawData() + 1));
 				from.setData(data);
-				DataManager.addEntry(new BlockChangeEntry("Environment", DataType.WATER_FLOW, loc, to, from));
+				DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.WATER_FLOW, loc, to, from));
 			}
 
 			//If we are flowing over lava, cobble or obsidian will form
@@ -124,7 +124,7 @@ public class MonitorBlockListener extends HawkEyeListener {
 			if (lower.getTypeId() == 10 || lower.getTypeId() == 11) {
 				from.setTypeId(lower.getData().getData() == 0?49:4);
 				loc.setY(loc.getY() - 1);
-				DataManager.addEntry(new BlockChangeEntry("Environment", DataType.WATER_FLOW, loc, lower, from));
+				DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.WATER_FLOW, loc, lower, from));
 			}
 
 		}

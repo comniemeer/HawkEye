@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -34,9 +35,9 @@ public class SignEntry extends DataEntry {
 		setInfo(player, type, block.getLocation());
 	}
 
-	public SignEntry(String player, DataType type, Block block) {
+	public SignEntry(String player, UUID uuid, DataType type, Block block) {
 		interpretSignBlock(block);
-		setInfo(player, type, block.getLocation());
+		setInfo(player, uuid, type, block.getLocation());
 	}
 
 	public SignEntry(Player player, DataType type, Block block, String[] lines) {

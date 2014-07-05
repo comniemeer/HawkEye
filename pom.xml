@@ -15,14 +15,14 @@
     
     <!-- WorldEdit -->
     <repository>
-      <id>spout-repo</id>
-      <url>http://nexus.spout.org/content/groups/public/</url>
+      <id>sk89q-repo</id>
+      <url>http://maven.sk89q.com/repo/</url>
     </repository>
     
     <!-- PermissionsEx -->
     <repository>
-      <id>tehkode-repo</id>
-      <url>http://repo.tehkode.ru/repository/bukkit-plugins/</url>
+      <id>pex-repo</id>
+      <url>http://pex-repo.zachsthings.com</url>
     </repository>
   </repositories>
   
@@ -30,19 +30,19 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.2.4-R0.1-SNAPSHOT</version>
+      <version>1.7.9-R0.2</version>
     </dependency>
     
     <dependency>
       <groupId>com.sk89q</groupId>
       <artifactId>worldedit</artifactId>
-      <version>5.3-SNAPSHOT</version>
+      <version>5.6.2</version>
     </dependency>
     
     <dependency>
       <groupId>ru.tehkode</groupId>
       <artifactId>PermissionsEx</artifactId>
-      <version>1.20-SNAPSHOT</version>
+      <version>1.22</version>
     </dependency>
     
     <dependency>

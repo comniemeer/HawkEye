@@ -2,6 +2,7 @@ package uk.co.oliwali.HawkEye.entry;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -25,9 +26,9 @@ public class ContainerEntry extends DataEntry {
 		data = diff;
 		setInfo(player, DataType.CONTAINER_TRANSACTION, location);
 	}
-	public ContainerEntry(String player, Location location, String diff) {
+	public ContainerEntry(String player, UUID uuid, Location location, String diff) {
 		data = diff;
-		setInfo(player, DataType.CONTAINER_TRANSACTION, location);
+		setInfo(player, uuid, DataType.CONTAINER_TRANSACTION, location);
 	}
 
 	@Override

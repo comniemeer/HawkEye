@@ -103,7 +103,7 @@ public class MonitorEntityListener extends HawkEyeListener {
 	@HawkEvent(dataType = DataType.EXPLOSION)
 	public void onEntityExplode(EntityExplodeEvent event) {
 		for (Block b : event.blockList().toArray(new Block[0]))
-			DataManager.addEntry(new BlockEntry("Environment", DataType.EXPLOSION, b));
+			DataManager.addEntry(new BlockEntry("Environment", null, DataType.EXPLOSION, b));
 	}
 
 	@HawkEvent(dataType = DataType.PAINTING_BREAK)
@@ -129,8 +129,8 @@ public class MonitorEntityListener extends HawkEyeListener {
 		// Enderman picking up block
 		if (event.getTo() == Material.AIR && Config.isLogged(DataType.ENDERMAN_PICKUP)) {
 			if (block.getType() == Material.WALL_SIGN || block.getType() == Material.SIGN_POST)
-				DataManager.addEntry(new SignEntry("Environment", DataType.SIGN_BREAK, event.getBlock()));
-			DataManager.addEntry(new BlockEntry("Environment", DataType.ENDERMAN_PICKUP, block));
+				DataManager.addEntry(new SignEntry("Environment", null, DataType.SIGN_BREAK, event.getBlock()));
+			DataManager.addEntry(new BlockEntry("Environment", null, DataType.ENDERMAN_PICKUP, block));
 		} else if (Config.isLogged(DataType.ENDERMAN_PLACE)) {
 			// Enderman placing block
 			Enderman enderman = (Enderman) event.getEntity();
@@ -142,7 +142,7 @@ public class MonitorEntityListener extends HawkEyeListener {
 				newState.setType(enderman.getCarriedMaterial().getItemType());
 			}
 
-			DataManager.addEntry(new BlockChangeEntry("Environment", DataType.ENDERMAN_PLACE, block.getLocation(), block.getState(), newState));
+			DataManager.addEntry(new BlockChangeEntry("Environment", null, DataType.ENDERMAN_PLACE, block.getLocation(), block.getState(), newState));
 		}
 	}
 

@@ -1,5 +1,7 @@
 package uk.co.oliwali.HawkEye.entry;
 
+import java.util.UUID;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,15 +20,13 @@ public class BlockChangeEntry extends DataEntry {
 	private String from = null;
 	private String to = null;
 
-	public BlockChangeEntry() { }
-
 	public BlockChangeEntry(Player player, DataType type, Location loc, BlockState from, BlockState to) {
 		setInfo(player, type, loc);
 		this.from = BlockUtil.getBlockString(from);
 		this.to = BlockUtil.getBlockString(to);
 	}
-	public BlockChangeEntry(String player, DataType type, Location loc, BlockState from, BlockState to) {
-		setInfo(player, type, loc);
+	public BlockChangeEntry(String player, UUID uuid, DataType type, Location loc, BlockState from, BlockState to) {
+		setInfo(player, uuid, type, loc);
 		this.from = BlockUtil.getBlockString(from);
 		this.to = BlockUtil.getBlockString(to);
 	}
@@ -35,8 +35,8 @@ public class BlockChangeEntry extends DataEntry {
 		this.from = from;
 		this.to = to;
 	}
-	public BlockChangeEntry(String player, DataType type, Location loc, String from, String to) {
-		setInfo(player, type, loc);
+	public BlockChangeEntry(String player, UUID uuid, DataType type, Location loc, String from, String to) {
+		setInfo(player, uuid, type, loc);
 		this.from = from;
 		this.to = to;
 	}
